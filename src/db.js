@@ -1,7 +1,7 @@
 // db.js
 const mongodb = require("mongodb");
 
-const uri = "mongodb://localhost:27017";
+const uri = process.env.MONGO_URI;
 const dbName = "condiment-pen";
 
 let db;
@@ -9,6 +9,8 @@ let db;
 const connect = async () => {
   const client = await mongodb.MongoClient.connect(uri, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
   });
   db = client.db(dbName);
 };

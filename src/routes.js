@@ -12,7 +12,7 @@ router.post("/api/subscribe", async (req, res) => {
 
   try {
     // Save email to database
-    await db.subscribe(email);
+    await db.addEmail(email);
 
     // Return success response
     return res.status(200).json({ message: "Successfully subscribed." });
